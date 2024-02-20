@@ -81,7 +81,6 @@ sdk 配置自定义消息组件
 
 ```js
 ysf('customMessage', {
-  type: 'customMessage', // 这里是消息的类型的枚举， 定义在什么场景发生此消息
   data: { // 用户自定义数据，格式 any
     title: 'hello world'
   },
