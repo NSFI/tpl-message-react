@@ -52,11 +52,11 @@ const ConfigProvider = (props: Props) => {
   }, []);
 
   if (error) {
-    return <div>企业配置读取失败，请确认链接中是否包含企业 appKey</div>;
+    return <div style={{ padding: 12 }}>企业配置读取失败，请确认链接中是否包含企业 appKey</div>;
   }
 
   if (!loaded) {
-    return <div>企业配置读取中...</div>;
+    return <div style={{ padding: 12 }}>企业配置读取中...</div>;
   }
   return <>{props.children}</>;
 };
