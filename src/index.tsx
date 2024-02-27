@@ -1,10 +1,11 @@
-import CustomMessage from "./CustomMessage.tsx";
+import CustomMessage from "./CustomMessage";
 import { libReady } from "./react-umd-loader";
 
 const LIB_NAME = "ysf";
 
 async function main() {
-  libReady(LIB_NAME, { CustomMessage });
+  const libObject = { default: CustomMessage };
+  libReady(LIB_NAME, libObject);
 }
 
 main().catch(console.error);

@@ -7,7 +7,6 @@ function RemoteTest() {
     <UmdComponent
       libName='ysf'
       libUrl='http://localhost:3000/ysf.umd.js'
-      componentName='CustomMessage'
       componentProps={{ content: mock }}
       fallback={<div>loading...</div>}
     />

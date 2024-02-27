@@ -54,9 +54,9 @@ export const preFetchLib = (libName: string, url: string) => {
       reject(e);
     };
 
-    shared.eventBus.once(`lib-ready:${libName}`, (components) => {
-      shared.pkgCache[libName] = components;
-      resolve(components);
+    shared.eventBus.once(`lib-ready:${libName}`, (libObject) => {
+      shared.pkgCache[libName] = libObject;
+      resolve(libObject);
     });
 
     document.head.appendChild(script);
@@ -64,13 +64,13 @@ export const preFetchLib = (libName: string, url: string) => {
 };
 
 /**
- * 远程组件加载完毕
- * @param libName
- * @param components
+ * 远程模块加载完毕
+ * @param libName 包名称
+ * @param libObject 包对象
  */
-export const libReady = (libName: string, components: any) => {
+export const libReady = (libName: string, libObject: any) => {
   const shared = getShared();
-  shared?.eventBus.emit(`lib-ready:${libName}`, components);
+  shared?.eventBus.emit(`lib-ready:${libName}`, libObject);
 };
 
 interface IReactRuntimeObj {
@@ -84,6 +84,6 @@ interface IReactRuntimeObj {
  * 绑定 React 运行时
  */
 export const bindReactRuntime = (runtimeObject: IReactRuntimeObj) => {
-  (window as any).React = runtimeObject.React;
-  (window as any).ReactDOM = runtimeObject.ReactDOM;
+  window.React = runtimeObject.React;
+  window.ReactDOM = runtimeObject.ReactDOM;
 };
