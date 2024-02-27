@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^4.0.3",
+    "antd-mobile": "^5.34.0",
     "axios": "^1.6.7",
     "css-vars-ponyfill": "^2.4.8",
     "eventemitter3": "^5.0.1",

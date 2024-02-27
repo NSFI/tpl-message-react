@@ -16,7 +16,7 @@ const LayoutCanvas = (props: Props) => {
   );
 
   return (
-    <div className='layout-canvas' style={bgStyle}>
+    <div className='layout-canvas g-root' style={bgStyle}>
       <div className='layout-canvas__header'>网易七鱼</div>
       <div className="layout-canvas__body">
         <div className='layout-canvas__message'>

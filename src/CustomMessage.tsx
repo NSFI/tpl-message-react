@@ -1,4 +1,6 @@
 import React from "react";
+import { Button, Modal } from "antd-mobile";
+
 import "./CustomMessage.less";
 
 type Props = {
@@ -12,9 +14,29 @@ const CustomMessage: React.FC<Props> = (props) => {
   const { content } = props;
   return (
     <div className='qy-custom-message'>
-      <div style={{ color: "red" }}>{content.data.title}</div>
-      <div style={{ color: "blue" }}>{content.description}</div>
+      <div style={{ color: "red", fontWeight: "bold" }}>
+        {content.data.staffName}
+      </div>
       <div>全部数据：{JSON.stringify(content)}</div>
+
+      <Button
+        style={{
+          marginTop: 12,
+        }}
+        block
+        onClick={() =>
+          Modal.alert({
+            content: (
+              <img
+                style={{ width: "100%" }}
+                src={content.data.staffImage}
+              ></img>
+            ),
+          })
+        }
+      >
+        查看客服详情
+      </Button>
     </div>
   );
 };
