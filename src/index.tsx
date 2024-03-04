@@ -10,5 +10,5 @@ async function main() {
 
 main().catch(console.error);
 
-// // avoid isolatedModules warning
+// avoid isolatedModules warning
 export default "Ysf Module Index file";

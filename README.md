@@ -110,3 +110,50 @@ ysf('customMessage', {
 '--ysf-color-warning'     // 危险颜色
 '--ysf-color-danger'      // 失败颜色
 ```
+
+## 注意事项
+
+### 请不要在组件中使用 ReactDOM.render
+
+由于项目采用的 React 版本为 18.x，所以 ReactDOM 并未暴露 render 方法，如果要使用类似的 api，请用如下代码替换
+
+```tsx
+ReactDOM.createRoot("#mount").render(<div>hello world</div>);
+```
+
+### 合理设计数据结构，以显示多种效果
+
+由于每个企业只配置一个组件，所以想要多种实现方式请通过设计合理的数据结构以渲染对应的样子，例如我们设计 data.type 代表渲染不同的组件
+
+```tsx
+import React from "react";
+
+type Props = {
+  content: {
+    data: any;
+    description: string;
+  };
+};
+
+const CardItem = () => {
+  return <div>i am card</div>;
+};
+
+const OrderItem = () => {
+  return <div>i am order</div>;
+};
+
+const CustomMessage: React.FC<Props> = (props) => {
+  const { content } = props;
+  const { type } = content.data;
+
+  return (
+    <div className='qy-custom-message'>
+      {type === "card" ? <CardItem /> : null}
+      {type === "order" ? <OrderItem /> : null}
+    </div>
+  );
+};
+
+export default CustomMessage;
+```
