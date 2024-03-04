@@ -17,7 +17,12 @@ const CustomMessage: React.FC<Props> = (props) => {
       <div style={{ color: "red", fontWeight: "bold" }}>
         {content.data.staffName}
       </div>
-      <div>全部数据：{JSON.stringify(content)}</div>
+      <img
+        src={content.data.img}
+        style={{ width: "100%", height: 200, objectFit: "contain" }}
+        alt=''
+      />
+      <div>data.content 数据：{JSON.stringify(content.data.content)}</div>
 
       <Button
         style={{
