@@ -22,7 +22,6 @@ const CustomMessage: React.FC<Props> = (props) => {
         style={{ width: "100%", height: 200, objectFit: "contain" }}
         alt=''
       />
-      <div>data.content 数据：{JSON.stringify(content.data.content)}</div>
 
       <Button
         style={{

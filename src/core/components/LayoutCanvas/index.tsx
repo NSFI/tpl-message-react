@@ -21,6 +21,7 @@ const LayoutCanvas = (props: Props) => {
       <div className="layout-canvas__body">
         <div className='layout-canvas__message'>
           <img
+            className="layout-canvas__avatar"
             src='https://ysf.qiyukf.net/operation/1348aff9ddc672e8035489189352ec1a'
             alt=''
           />

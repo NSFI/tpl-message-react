@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import CustomMessage from "./CustomMessage";
 import mock from "./mock.json";
-import LayoutCanvas from "./components/LayoutCanvas";
-import ConfigProvider from "./components/ConfigProvider";
+import LayoutCanvas from "./core/components/LayoutCanvas";
+import ConfigProvider from "./core/components/ConfigProvider";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([

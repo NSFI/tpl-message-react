@@ -113,9 +113,19 @@ ysf('customMessage', {
 
 ## 注意事项
 
+### 浏览器兼容性
+
+默认脚手架在脚本编译时的最低 `chrome` 支持版本为 `49`，如果有其他特殊的兼容性需求，请自行修改 `vite.config.umd.ts` 配置中的 `babel.targets`
+
 ### 请不要在组件中使用 ReactDOM.render
 
 由于项目采用的 React 版本为 18.x，所以 ReactDOM 并未暴露 render 方法，如果要使用类似的 api，请用如下代码替换
+
+```tsx
+ReactDOM.render(<div>hello world</div>, "#mount");
+```
+
+替换为
 
 ```tsx
 ReactDOM.createRoot("#mount").render(<div>hello world</div>);
@@ -123,22 +133,28 @@ ReactDOM.createRoot("#mount").render(<div>hello world</div>);
 
 ### 合理设计数据结构，以显示多种效果
 
-由于每个企业只配置一个组件，所以想要多种实现方式请通过设计合理的数据结构以渲染对应的样子，例如我们设计 data.type 代表渲染不同的组件
+由于每个企业只配置一个远程组件，所以想要多种渲染效果，可以通过设计合理的数据结构实现例如我们设计 `data.type` 代表需要渲染的组件类型
 
 ```tsx
+// CustomMessage.tsx
 import React from "react";
 
 type Props = {
   content: {
-    data: any;
+    data: {
+      type: "card" | "order"; // 自定义数据类型
+      [key: string]: any;
+    };
     description: string;
   };
 };
 
+// 渲染卡片
 const CardItem = () => {
   return <div>i am card</div>;
 };
 
+// 渲染订单
 const OrderItem = () => {
   return <div>i am order</div>;
 };

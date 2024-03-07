@@ -1,4 +1,4 @@
-import mock from "../mock.json";
+import mock from "../../mock.json";
 import { UmdComponent } from "../react-umd-loader";
 
 

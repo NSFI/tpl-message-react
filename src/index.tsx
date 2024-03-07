@@ -1,5 +1,5 @@
 import CustomMessage from "./CustomMessage";
-import { libReady } from "./react-umd-loader";
+import { libReady } from "./core/react-umd-loader";
 
 const LIB_NAME = "ysf";
 

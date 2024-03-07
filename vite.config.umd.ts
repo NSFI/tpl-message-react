@@ -27,6 +27,7 @@ export default defineConfig({
         babel({
           extensions: [".js", ".jsx", ".ts", ".tsx"],
           babelHelpers: 'bundled',
+          exclude: [/core-js/], // exclude core-js from babel https://github.com/citrus327/issue-blog-record/issues/40
           presets: [
             [
               "@babel/preset-env",
