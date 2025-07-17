@@ -22,24 +22,17 @@ const ConfigProvider = (props: Props) => {
       return;
     }
 
-    let link = `/client?k=${appkey}&wp=1`;
+    let link = `/client/setting/data?k=${appkey}&wp=1`;
     if (templateId) {
       link += `&templateId=${templateId}`;
     }
     axios
       .get(link)
       .then((response) => {
-        const regex =
-          /<!-- happy ftl start -->([\s\S]*?)<!-- happy ftl end -->/g;
-        const matches = response.data.match(regex);
-        if (matches) {
-          const scriptRegex = /window\.setting\s*=\s*(\{[\s\S]*?\});/s;
-          const scriptMatch = matches[0].match(scriptRegex);
-          if (scriptMatch) {
-            window.setting = JSON.parse(scriptMatch[1]);
-            setTheme(window.setting.companyInfo.theme);
-            setLoaded(true);
-          }
+        const { data}  = response;
+        if (data.code === 200) {
+          setTheme(data.result.companyInfo.theme);
+          setLoaded(true);
         } else {
           console.log("配置读取失败");
           setError(true);
